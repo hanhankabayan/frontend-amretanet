@@ -95,9 +95,10 @@ const customerAutocompleteFilter = (
   query_text: any,
   item: any
 ) => {
-  const text_one = item?.raw?.title.toLowerCase();
-  const text_two = item?.raw?.service_number.toString().toLowerCase();
-  const search_text = query_text.toLowerCase();
+  const text_one = (item?.raw?.title ?? "").toString().toLowerCase();
+  const text_two = (item?.raw?.service_number ?? "").toString().toLowerCase();
+  const search_text = (query_text ?? "").toString().toLowerCase();
+
   return (
     text_one.indexOf(search_text) > -1 || text_two.indexOf(search_text) > -1
   );
